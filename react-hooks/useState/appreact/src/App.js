@@ -1,16 +1,23 @@
 import React from "react";
-import ButtonModal from "./ButtonModal";
-import Modal from "./Modal";
 
 const App = () => {
-  const [modal, setModal] = React.useState(false);
+  const [contador, setContador] = React.useState(1);
+  const [itens, setItens] = React.useState(["Item 1"]);
+
+  function handleClick() {
+    setContador(contador + 1);
+    setItens([...itens, "Item " + (contador + 1)]);
+  }
 
   return (
-    <React.Fragment>
-      <div>{modal ? "Modal Aberto" : "Modal Fechado"}</div>
-      <Modal modal={modal} setModal={setModal} />
-      <ButtonModal setModal={setModal} />
-    </React.Fragment>
+    <div>
+      <ul>
+        {itens.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+      <button onClick={handleClick}>{contador}</button>
+    </div>
   );
 };
 
