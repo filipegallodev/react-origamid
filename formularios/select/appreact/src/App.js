@@ -1,22 +1,16 @@
 import React from "react";
+import Select from "./Form/Select";
 
 const App = () => {
-  const [select, setSelect] = React.useState("");
+  const [produto, setProduto] = React.useState("");
 
   return (
     <form>
-      <select
-        value={select}
-        onChange={({ target }) => setSelect(target.value)}
-        id="produtos"
-      >
-        <option disabled value="">
-          Selecione
-        </option>
-        <option value="notebook">Notebook</option>
-        <option value="smartphone">Smartphone</option>
-        <option value="tablet">Tablet</option>
-      </select>
+      <Select
+        options={["Smartphone", "Tablet"]}
+        value={produto}
+        setValue={setProduto}
+      />
     </form>
   );
 };
